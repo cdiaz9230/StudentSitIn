@@ -1,6 +1,6 @@
 ---
 title: "Student Sit In"
-author: "your name here"
+author: "Celia Diaz"
 date: "10/26/2019"
 output: 
   html_document:
@@ -48,6 +48,7 @@ names(UCDdataframe)
 <!--  describe analysis methods here 
 what are the variable types, and indicate gaphical, numerical, and inferential methods appropriate
 for this question  !--> 
+Both variables are categorical. We will use bar graphs,and a chi square test. 
 
 
 ## Data summary
@@ -56,35 +57,49 @@ for this question  !-->
 put the graphic description of the data here
 
 ```{r}
-
+barchartGC (~seat+major, data= UCDdataframe, type = "percent", xlab = "seating", main = "seating vs. major")
 ```
 
 Explain what the graph shows
+The bar graph shows that Liberal art students prefer to sit in the front. However, the non Liberal students prefer the back seats with only a slight difference of preference to the middle seats.   
 
 
 **Numerical summary**
 put numerical summary here
 
 ```{r}
-
+tab1 = xtabs(formula = ~seat+major, data= UCDdataframe)
+    rowPerc(tab1)
 ```
 
 Explain what the numeric summary says
+
+The numerical summary above states that Non Liberal students prefer the back seats to the middle and front seats. The Liberal arts students prefer the front seats to the middle and back seats. 
 
 ## Inferential Results
 put the inferential test for the the null hypothesis here
 
 ```{r}
+chisqtestGC(tab1)
 
 ```
 
 what is the p-value?
+
+p-value= 0.2173
 
 ## Results and conclusions
 
 <!-- explain-- is there evidence that certain majors tend to sit in particular areas of the class?  Can the results of this test be generalized to all majors in all universities? !-->
 
 explain the result, can the result be generalized?
+
+Since the P value is 0.2173 we fail to reject the $H_0$ hypothesis.There is no relationship between one's major and where one sits in a class. 
+The Liberal art students prefer to sit in the front whereas the non Liberal art students prefer to sit in the back. Although, there was only a slight difference in seat preference between the back and middle seats of the non Liberal art students. 
+The numerical results show only a slight difference of about 5% between the non Liberal art students who prefer the back vs. the middle seats. There is an 8% difference between the Liberal art students who prefer the back seats vs. the middle seats.
+Yes, the results of this test can be generalized to all the majors in all universities. 
+
+
 
 <!--
 push results to your github account, turn in the URL
